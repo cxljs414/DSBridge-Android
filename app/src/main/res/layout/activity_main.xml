@@ -49,6 +49,14 @@
             android:textAllCaps="false"
             />
 
+        <Button
+            android:id="@+id/testx5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x5 test"
+            android:textAllCaps="false"
+            />
+
 
     </LinearLayout>
 

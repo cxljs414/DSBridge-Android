@@ -1,9 +1,11 @@
 package wendu.jsbdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
@@ -36,9 +38,7 @@ public class CallJavascriptActivity extends AppCompatActivity implements View.On
         getView(R.id.hasMethodAsynXX).setOnClickListener(this);
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView= getView(R.id.webview);
-        dWebView.loadUrl("file:///android_asset/native-call-js.html");
-
-
+        dWebView.loadUrl("http://soft.imtt.qq.com/browser/tes/feedback.html");
     }
 
     void showToast(Object o) {

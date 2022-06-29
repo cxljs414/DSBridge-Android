@@ -11,8 +11,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Keep;
-import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -39,7 +37,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +45,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
+
+import androidx.appcompat.app.AlertDialog;
 
 
 /**
@@ -77,7 +77,7 @@ public class DWebView extends WebView {
             }
         }
 
-        @Keep
+        
         @JavascriptInterface
         public String call(String methodName, String argStr) {
             String error = "Js bridge  called, but can't find a corresponded " +
@@ -245,7 +245,7 @@ public class DWebView extends WebView {
         isDebug = enabled;
     }
 
-    @Keep
+    
     private void init() {
         APP_CACHE_DIRNAME = getContext().getFilesDir().getAbsolutePath() + "/webcache";
         WebSettings settings = getSettings();
@@ -282,11 +282,11 @@ public class DWebView extends WebView {
         return new String[]{namespace, method};
     }
 
-    @Keep
+    
     private void addInternalJavascriptObject() {
         addJavascriptObject(new Object() {
 
-            @Keep
+            
             @JavascriptInterface
             public boolean hasNativeMethod(Object args) throws JSONException {
 
@@ -322,7 +322,7 @@ public class DWebView extends WebView {
                 return false;
             }
 
-            @Keep
+            
             @JavascriptInterface
             public String closePage(Object object) throws JSONException {
                 runOnMainThread(new Runnable() {
@@ -340,20 +340,20 @@ public class DWebView extends WebView {
                 return null;
             }
 
-            @Keep
+            
             @JavascriptInterface
             public void disableJavascriptDialogBlock(Object object) throws JSONException {
                 JSONObject jsonObject = (JSONObject) object;
                 alertBoxBlock = !jsonObject.getBoolean("disable");
             }
 
-            @Keep
+            
             @JavascriptInterface
             public void dsinit(Object jsonObject) {
                 DWebView.this.dispatchStartupQueue();
             }
 
-            @Keep
+            
             @JavascriptInterface
             public void returnValue(final Object obj) throws JSONException {
                 runOnMainThread(new Runnable() {
@@ -897,7 +897,7 @@ public class DWebView extends WebView {
         }
 
 
-        @Keep
+        
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         public void openFileChooser(ValueCallback valueCallback, String acceptType) {
             if (webChromeClient instanceof FileChooser) {
